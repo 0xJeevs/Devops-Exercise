@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: 'https://github.com/0xJeevs/Devops-Exercise.git'
     targetRevision: main
-    path: '/dev'
+    path: 'dev'
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
