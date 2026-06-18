@@ -1,0 +1,63 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/0xJeevs/Devops-Exercise.git'
+    targetRevision: HEAD
+    path: 'gitops/dev'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev
+  syncPolicy:
+    automated:
+      prune: true       # Requirement: Pruning
+      selfHeal: true    # Requirement: Self Heal
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-qa
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/0xJeevs/Devops-Exercise.git'
+    targetRevision: HEAD
+    path: 'gitops/qa'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: qa
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/0xJeevs/Devops-Exercise.git'
+    targetRevision: HEAD
+    path: 'gitops/prod'
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
