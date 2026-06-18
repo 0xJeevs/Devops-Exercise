@@ -30,7 +30,7 @@ spec:
   source:
     repoURL: 'https://github.com/0xJeevs/Devops-Exercise.git'
     targetRevision: main
-    path: 'gitops/qa'
+    path: 'qa'
   destination:
     server: https://kubernetes.default.svc
     namespace: qa
@@ -51,7 +51,7 @@ spec:
   source:
     repoURL: 'https://github.com/0xJeevs/Devops-Exercise.git'
     targetRevision: main
-    path: 'gitops/prod'
+    path: 'prod'
   destination:
     server: https://kubernetes.default.svc
     namespace: prod
